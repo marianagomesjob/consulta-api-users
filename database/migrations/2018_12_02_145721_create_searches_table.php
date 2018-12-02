@@ -17,7 +17,6 @@ class CreateSearchesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('cpf',11)->nullable();
-            $table->longtext('results')->nullable();
             $table->timestamps();
         });
     }
