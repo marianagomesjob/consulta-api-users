@@ -11,5 +11,6 @@
 |
 */
 
-Route::get('/', 'SearchController@index')->name('search.index');
-Route::get('/history', 'SearchController@history')->name('search.history');
+Route::get('/',         'SearchController@index')->name('search.index');
+Route::get('/search',   'SearchController@search')->name('search.search');
+Route::get('/history',  'SearchController@history')->name('search.history');

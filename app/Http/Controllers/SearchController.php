@@ -16,7 +16,12 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SearchRequest $request)
+    public function index()
+    {
+        return view('search.index');
+    }
+
+    public function search(SearchRequest $request)
     {
         if (!is_null($request->name) || !is_null($request->cpf)) {
             $search = '&q=';

@@ -8,7 +8,7 @@
         <div class="container">
             <h1 class="jumbotron-heading">Faça uma busca</h1>
             <p class="lead text-muted">Você pode buscar por nome competo e/ou CPF, basta digitar os dados abaixo.</p>
-            <form action="{{ route('search.index') }}" method="get">
+            <form action="{{ route('search.search') }}" method="get">
                 <div class="row text-left">
                     <div class="col-lg-6 offset-lg-3">
                         <div class="form-group">
@@ -46,9 +46,6 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th>CPF</th>
-                    <th>Idade</th>
-                    <th>Sexo</th>
-                    <th>E-mails</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,17 +56,6 @@
                         <tr>
                             <th scope="row">{{ $user->BasicData->Name }}</th>
                             <th>{{ $user->BasicData->TaxIdNumber }}</th>
-                            <th>{{ $user->BasicData->Age }}</th>
-                            <th>{{ $user->BasicData->Gender }}</th>
-                            <td>
-                                @if (count($user->Emails) == 0)
-                                    -
-                                @else
-                                    @foreach($user->Emails as $email)
-                                        {!! $email->EmailAddress !!} <br>
-                                    @endforeach
-                                @endif
-                            </td>
                         </tr>
                     @endforeach
                 @endif
