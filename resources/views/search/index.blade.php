@@ -2,6 +2,21 @@
 
 @section('title', 'Busca de usuários via API')
 
+@push('scripts')
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+
+    <script type="application/javascript">
+        $(".cpf").inputmask('999.999.999-99', {
+            //numericInput: true,
+            clearMaskOnLostFocus: true,
+            autoUnmask: true,
+            rightAlign: false,
+            removeMaskOnSubmit: true,
+        });
+    </script>
+
+@endpush
+
 @section('content')
 
     <section class="jumbotron text-center">
@@ -13,7 +28,7 @@
                     <div class="col-lg-6 offset-lg-3">
                         <div class="form-group">
                             <label for="name">Nome completo: </label>
-                            <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ app('request')->input('name') }}" name="name" id="name" placeholder="Digite o nome completo">
+                            <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ is_null(app('request')->input('name')) ? old('name') : app('request')->input('name') }}" name="name" id="name" placeholder="Digite o nome completo">
                             @if ($errors->has('name'))
                             <span class="invalid-feedback"> {{ $errors->first('name') }} </span>
                             @endif
@@ -22,7 +37,7 @@
                     <div class="col-lg-6 offset-lg-3">
                         <div class="form-group">
                             <label for="cpf">CPF: </label>
-                            <input type="text" class="form-control cpf {{ $errors->has('cpf') ? ' is-invalid' : '' }}" value="{{ app('request')->input('cpf') }}" name="cpf" id="cpf" placeholder="Digite o CPF">
+                            <input type="text" class="form-control cpf {{ $errors->has('cpf') ? ' is-invalid' : '' }}" value="{{ is_null(app('request')->input('cpf')) ? old('cpf') : app('request')->input('cpf') }}" name="cpf" id="cpf" placeholder="Digite o CPF">
                             @if ($errors->has('cpf'))
                             <span class="invalid-feedback"> {{ $errors->first('cpf') }} </span>
                             @endif
