@@ -45,7 +45,11 @@ class SearchController extends Controller
             foreach ($users->Result as $user) {
                 $usersSave = [
                     'name' => $user->BasicData->Name,
-                    'cpf' => $user->BasicData->TaxIdNumber
+                    'cpf' => $user->BasicData->TaxIdNumber,
+                    'basic' => json_encode($user->BasicData),
+                    'emails' => json_encode($user->Emails),
+                    'phones' => json_encode($user->Phones),
+                    'result' => json_encode($user)
                 ];
                 Search::create($usersSave);
             }
